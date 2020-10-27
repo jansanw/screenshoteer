@@ -51,9 +51,7 @@ const deviceName = puppeteer.devices[program.emulate];
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     }
     if (program.proxy) {
-      Object.assign(option, {
-        args: [ `--proxy-server=${program.proxy}` ]
-      })
+      option.args.push(`--proxy-server=${program.proxy}`)
     }
     const browser = await puppeteer.launch(option);
     const page = await browser.newPage();

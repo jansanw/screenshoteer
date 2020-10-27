@@ -52,7 +52,7 @@ server.on('request', async (request, response) => {
                 response.writeHead(500, {
                     'Content-Type': 'text/plain'
                 });
-                response.end(err);
+                response.end(err.toString());
             }
             break
         }
@@ -68,10 +68,12 @@ server.on('request', async (request, response) => {
 
 function screenshot(query) {
     const filename = `/tmp/${md5(query)}.png`
+    const _proxy = (proxy && !query.includes('proxy')) ? ` --proxy ${proxy}` : ''
+    console.log(_proxy)
     const command = util.format(`${NODE_PATH} ./index.js --file %s --%s`,
         filename,
         query.replace(/&/g, ' --').replace(/=/g, ' '))
-        + (proxy ? ` --proxy ${proxy}` : '')
+        + _proxy
     console.log(command)
 
     return new Promise((resolve, reject) => {
