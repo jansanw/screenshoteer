@@ -85,9 +85,10 @@ const deviceName = puppeteer.devices[program.emulate];
       const [username, password] = program.auth.split(';');
       await page.authenticate({ username, password });
     }
+
     await page.goto(program.url);
     const title = (await page.title()).replace(/[/\\?%*:|"<>]/g, '-');
-    if (program.waitfor) await page.waitFor(Number(program.waitfor));
+    if (program.waitfor) await page.waitForTimeout(Number(program.waitfor));
     if (program.waitforselector) await page.waitForSelector(program.waitforselector);
     if (program.click) await page.click(program.click);
     const file = program.file ? program.file : `${title} ${program.emulate} ${program.el} ${timestamp}.png`;

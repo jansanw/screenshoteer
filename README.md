@@ -34,7 +34,7 @@ Parameters:
 -h help  
 --url web page url  
 --proxy use a proxy  
---emulate - emulate web device example: --emulate "iPhone 6"  
+--emulate - emulate web device example: --emulate "Huawei Meta 40"  
 --fullpage - can be true or false. It will take screenshot of entire web page if is true. True is the default parameter.  
 --pdf - generate additional pdf  
 --w - width of the Web Page in px  
