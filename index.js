@@ -46,7 +46,10 @@ const deviceName = puppeteer.devices[program.emulate];
   }
 
   async function execute() {
-    const option = {}
+    const option = {
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    }
     if (program.proxy) {
       Object.assign(option, {
         args: [ `--proxy-server=${program.proxy}` ]

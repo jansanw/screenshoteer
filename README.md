@@ -1,23 +1,42 @@
-<h1 align="center"> Screenshoteer </h1>
-<p> This is a awesome tool to take your website screenshots using command line. you can do this with the help of some useful commands.
-plese go and use this awesome tool for  your websites.</p>
+# Screenshoteer
 
-<p align="center"> Makes web screenshots and mobile emulations from the command line. </p>
+forked from [vladocar/screenshoteer](https://github.com/vladocar/screenshoteer)
 
-<p align="center"><img src="carbon-shot.png" /></p>
-<hr/>
+## Installation
 
-<p>Tool based on <a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a>. </p>
+```shell script
+# Using Ubuntu Node.js v14.x
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
-<h4>Installation </h4>
+sudo apt install -y nodejs npm
 
-```shell
+# program
 git clone https://github.com/jansanw/screenshoteer.git
-npm i
-```
-<p>You can use  screenshoteer with easy and efficient way like this:</p>
 
-```shell
+npm install
+```
+
+## run as server
+
+```shell script
+    NODE_PATH=/usr/bin/node PORT=8060 /usr/bin/node ./server.js
+
+    # proxy supported
+    NODE_PATH=/usr/bin/node PORT=8060 PROXY=127.0.0.1:1080 /usr/bin/node ./server.js
+
+```
+
+### fetch
+```
+http://localhost:8060/screenshot?url=https://www.baidu.com
+
+# and surpprt command params
+http://localhost:8060/screenshot?url=https://www.baidu.com&w=375
+```
+
+## run as command
+
+```shell script
 node ./index.js  --url https://www.example.com
 
 or .html localy copy the url path from the browser
@@ -26,9 +45,7 @@ node ./index.js --url file:///Users/../index.html
 node ./index.js --url file:///C:/Users/../Random-HTML-file.html
 ```
 
-<p>And with the help of puppeteer(Headless Chrome) it will generate screenshot of the entire web page.</p>
-
-<p>
+```
 Parameters:  
 
 
@@ -49,14 +66,14 @@ Parameters:
 --file - output file name (optional, otherwise based on page title and timestamp)
 --theme - switch to dark or light color theme
 --vd - Emulate vision deficiency 'achromatopsia', 'deuteranopia', 'protanopia', 'tritanopia', 'blurredVision', and 'none'
-<p>
+```
 
-<h4>Example: </h4>
+### Example: 
 
-```shell
+```shell script
 node ./index.js  --url https://news.ycombinator.com --fullpage false
 
-node ./index.js  --proxy=http://127.0.0.1:8889 --url https://www.google.com --file google.png
+node ./index.js --url https://www.baidu.com --file google.png
 
 node ./index.js  --url https://www.reddit.com/r/nodejs --emulate "iPhone 7"
 
@@ -89,6 +106,3 @@ node ./index.js --url https://mxb.dev/blog/color-theme-switcher/ --theme dark
 node ./index.js --url https://news.ycombinator.com --vd blurredVision
 ```
 
-<h3>License</h3>
-
-This project is licensed under the MIT License
