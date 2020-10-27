@@ -39,7 +39,7 @@ server.on('request', async (request, response) => {
     const {pathname, query} = url.parse(request.url);
     console.log(pathname, query)
     switch (pathname) {
-        case '/screenshot/': {
+        case '/screenshot': {
             try {
                 const stream = await screenshot(query)
                 const contentType = 'image/png';
