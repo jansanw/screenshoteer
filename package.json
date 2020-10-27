@@ -4,14 +4,15 @@
   "description": "Make screenshots and device emulations form your terminal",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "shot": "node ./index.js --proxy=http://127.0.0.1:8889 --url https://www.google.com --file google.png"
   },
   "bin": {
     "screenshoteer": "index.js"
   },
   "dependencies": {
-    "commander": "^2.19.0",
-    "puppeteer": "^4.00.0"
+    "commander": "^6.2.0",
+    "puppeteer": "^5.4.0"
   },
   "keywords": [
     "screenshots",

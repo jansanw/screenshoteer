@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const puppeteer = require('puppeteer');
-const devices = require('puppeteer/DeviceDescriptors');
 const program = require('commander');
 
 program
@@ -20,6 +19,7 @@ program
     .option('--file, [file]', 'Output file')
     .option('--theme, [theme]', 'Color Theme light or dark')
     .option('--vd, [vd]', 'Emulate vision deficiency')
+    .option('--proxy, [proxy]', 'use a proxy')
     .parse(process.argv);
 
 if (!program.url) {
@@ -46,7 +46,13 @@ const deviceName = puppeteer.devices[program.emulate];
   }
 
   async function execute() {
-    const browser = await puppeteer.launch();
+    const option = {}
+    if (program.proxy) {
+      Object.assign(option, {
+        args: [ `--proxy-server=${program.proxy}` ]
+      })
+    }
+    const browser = await puppeteer.launch(option);
     const page = await browser.newPage();
     if (program.no) {
       await page.setRequestInterception(true);
@@ -91,7 +97,7 @@ const deviceName = puppeteer.devices[program.emulate];
     } else {
       await page.screenshot({path: file, fullPage: program.fullPage});
     }
-    await page.emulateMedia('screen');
+    await page.emulateMediaType('screen');
     if (program.pdf) await page.pdf({path: `${title} ${program.emulate} ${timestamp}.pdf`});
     console.log(title);
     await browser.close();

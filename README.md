@@ -33,6 +33,7 @@ Parameters:
 
 -h help  
 --url web page url  
+--proxy use a proxy  
 --emulate - emulate web device example: --emulate "iPhone 6"  
 --fullpage - can be true or false. It will take screenshot of entire web page if is true. True is the default parameter.  
 --pdf - generate additional pdf  
@@ -53,6 +54,8 @@ Parameters:
 
 ```shell
 screenshoteer  --url https://news.ycombinator.com --fullpage false
+
+screenshoteer  --proxy=http://127.0.0.1:8889 --url https://www.google.com --file google.png
 
 screenshoteer  --url https://www.reddit.com/r/nodejs --emulate "iPhone 7"
 
@@ -84,8 +87,6 @@ screenshoteer --url https://mxb.dev/blog/color-theme-switcher/ --theme dark
 
 screenshoteer --url https://news.ycombinator.com --vd blurredVision
 ```
-<p> List of of supported mobile devices: https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js
-</p>
 
 <h3>License</h3>
 
