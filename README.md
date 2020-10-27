@@ -12,17 +12,18 @@ plese go and use this awesome tool for  your websites.</p>
 <h4>Installation </h4>
 
 ```shell
-npm i -g screenshoteer
+git clone https://github.com/jansanw/screenshoteer.git
+npm i
 ```
 <p>You can use  screenshoteer with easy and efficient way like this:</p>
 
 ```shell
-screenshoteer  --url https://www.example.com
+node ./index.js  --url https://www.example.com
 
 or .html localy copy the url path from the browser
 
-screenshoteer --url file:///Users/../index.html
-screenshoteer --url file:///C:/Users/../Random-HTML-file.html
+node ./index.js --url file:///Users/../index.html
+node ./index.js --url file:///C:/Users/../Random-HTML-file.html
 ```
 
 <p>And with the help of puppeteer(Headless Chrome) it will generate screenshot of the entire web page.</p>
@@ -53,39 +54,39 @@ Parameters:
 <h4>Example: </h4>
 
 ```shell
-screenshoteer  --url https://news.ycombinator.com --fullpage false
+node ./index.js  --url https://news.ycombinator.com --fullpage false
 
-screenshoteer  --proxy=http://127.0.0.1:8889 --url https://www.google.com --file google.png
+node ./index.js  --proxy=http://127.0.0.1:8889 --url https://www.google.com --file google.png
 
-screenshoteer  --url https://www.reddit.com/r/nodejs --emulate "iPhone 7"
+node ./index.js  --url https://www.reddit.com/r/nodejs --emulate "iPhone 7"
 
-screenshoteer  --url https://www.nytimes.com  --emulate "Nexus 4"
+node ./index.js  --url https://www.nytimes.com  --emulate "Nexus 4"
 
-screenshoteer --url https://www.reddit.com/r/javascript/ --w 600 --h 800 --fullpage false
+node ./index.js --url https://www.reddit.com/r/javascript/ --w 600 --h 800 --fullpage false
 
-screenshoteer --url https://www.reddit.com/r/javascript/ --w 600 --h 0 --fullpage false
+node ./index.js --url https://www.reddit.com/r/javascript/ --w 600 --h 0 --fullpage false
 
-screenshoteer --url https://lobste.rs --pdf
+node ./index.js --url https://lobste.rs --pdf
 
-screenshoteer --url https://lobste.rs --w 500
+node ./index.js --url https://lobste.rs --w 500
 
-screenshoteer --url  https://news.ycombinator.com/item?id=18598672 --el ".fatitem"
+node ./index.js --url  https://news.ycombinator.com/item?id=18598672 --el ".fatitem"
 
-screenshoteer --url  https://site.com --auth "username;password"
+node ./index.js --url  https://site.com --auth "username;password"
 
-screenshoteer --url https://www.nytimes.com --no "image"
+node ./index.js --url https://www.nytimes.com --no "image"
 
-screenshoteer --url https://www.nytimes.com --no "script"
+node ./index.js --url https://www.nytimes.com --no "script"
 
-screenshoteer --url https://www.economist.com/ --click ".ribbon__close-button"
+node ./index.js --url https://www.economist.com/ --click ".ribbon__close-button"
 
-screenshoteer --url file:///Users/../index.html
+node ./index.js --url file:///Users/../index.html
 
-screenshoteer --url https://www.slashdot.org --file /tmp/slashdot.png
+node ./index.js --url https://www.slashdot.org --file /tmp/slashdot.png
 
-screenshoteer --url https://mxb.dev/blog/color-theme-switcher/ --theme dark
+node ./index.js --url https://mxb.dev/blog/color-theme-switcher/ --theme dark
 
-screenshoteer --url https://news.ycombinator.com --vd blurredVision
+node ./index.js --url https://news.ycombinator.com --vd blurredVision
 ```
 
 <h3>License</h3>
