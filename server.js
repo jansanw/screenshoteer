@@ -76,7 +76,8 @@ function screenshot(query) {
             option += `--${key} ${query[key]} `
         }
     })
-    const filename = `/tmp/${md5(option)}.png`
+    const md5 = crypto.createHash('md5').update(option).digest('hex')
+    const filename = `/tmp/${md5}.png`
     const command = util.format(`${NODE_PATH} ./index.js --file %s %s`, filename, option)
     console.log({command})
 
@@ -100,12 +101,6 @@ function screenshot(query) {
             });
         })
     })
-}
-
-// 以md5的格式创建一个哈希值
-function md5(data) {
-    let hash = crypto.createHash('md5');
-    return hash.update(data).digest('base64');
 }
 
 server.listen(port);
