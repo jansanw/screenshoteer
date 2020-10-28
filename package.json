@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_PATH=/usr/bin/node PORT=8060 /usr/bin/node ./server.js",
+    "serve": "NODE_PATH=/usr/bin/node PORT=8060 /usr/bin/node ./server.js",
     "proxy": "NODE_PATH=/usr/bin/node PORT=8060 PROXY=127.0.0.1:1080 /usr/bin/node ./server.js",
     "shot": "node ./index.js --proxy=http://127.0.0.1:1080 --url https://www.google.com --file google.png"
   },

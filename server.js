@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const querystring = require("querystring");
 const fs = require('fs');
 const util = require('util');
 const crypto = require('crypto');
@@ -37,11 +38,12 @@ const server = http.createServer();
 
 server.on('request', async (request, response) => {
     const {pathname, query} = url.parse(request.url);
-    console.log(pathname, query)
+    const params = querystring.parse(query);
+    console.log({pathname, params});
     switch (pathname) {
         case '/screenshot': {
             try {
-                const stream = await screenshot(query)
+                const stream = await screenshot(params)
                 const contentType = 'image/png';
                 response.writeHead(200, {
                     'Content-Type': contentType
@@ -67,24 +69,27 @@ server.on('request', async (request, response) => {
 });
 
 function screenshot(query) {
-    const filename = `/tmp/${md5(query)}.png`
-    const _proxy = (proxy && !query.includes('proxy')) ? ` --proxy ${proxy}` : ''
-    console.log(_proxy)
-    const command = util.format(`${NODE_PATH} ./index.js --file %s --%s`,
-        filename,
-        query.replace(/&/g, ' --').replace(/=/g, ' '))
-        + _proxy
-    console.log(command)
+    query.proxy = query.proxy || proxy
+    let option = ''
+    Object.keys(query).forEach(key => {
+        if (query[key]) {
+            option += `--${key} ${query[key]} `
+        }
+    })
+    const filename = `/tmp/${md5(option)}.png`
+    const command = util.format(`${NODE_PATH} ./index.js --file %s %s`, filename, option)
+    console.log({command})
 
     return new Promise((resolve, reject) => {
         exec(command, (err, stdout, stderr) => {
+            console.log(`stdout: ${stdout}`);
+            console.log(`stderr: ${stderr}`);
+
             if (err) {
                 console.log(err);
                 reject(err)
                 return;
             }
-            console.log(`stdout: ${stdout}`);
-            console.log(`stderr: ${stderr}`);
 
             fs.readFile(filename, "binary", function (err, stream) {
                 if (err) {

@@ -8,12 +8,12 @@ forked from [vladocar/screenshoteer](https://github.com/vladocar/screenshoteer)
 # Using Ubuntu Node.js v14.x
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
-sudo apt install -y nodejs npm
+sudo apt install -y nodejs
 
 # program
 git clone https://github.com/jansanw/screenshoteer.git
 
-npm install
+cd screenshoteer & npm install
 ```
 
 ## run as server
