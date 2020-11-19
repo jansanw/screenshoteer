@@ -95,9 +95,9 @@ const deviceName = puppeteer.devices[program.emulate];
     const file = program.file ? program.file : `${title} ${program.emulate} ${program.el} ${timestamp}.jpg`;
     if (program.el) {
       const el = await page.$(program.el);
-      await el.screenshot({path: file});
+      await el.screenshot({path: file, type: 'jpeg'});
     } else {
-      await page.screenshot({path: file, fullPage: program.fullPage});
+      await page.screenshot({path: file, type: 'jpeg', fullPage: program.fullPage});
     }
     await page.emulateMediaType('screen');
     if (program.pdf) await page.pdf({path: `${title} ${program.emulate} ${timestamp}.pdf`});
