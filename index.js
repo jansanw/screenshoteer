@@ -92,7 +92,7 @@ const deviceName = puppeteer.devices[program.emulate];
     if (program.waitfor) await page.waitForTimeout(Number(program.waitfor));
     if (program.waitforselector) await page.waitForSelector(program.waitforselector);
     if (program.click) await page.click(program.click);
-    const file = program.file ? program.file : `${title} ${program.emulate} ${program.el} ${timestamp}.png`;
+    const file = program.file ? program.file : `${title} ${program.emulate} ${program.el} ${timestamp}.jpg`;
     if (program.el) {
       const el = await page.$(program.el);
       await el.screenshot({path: file});
