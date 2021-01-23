@@ -44,7 +44,7 @@ server.on('request', async (request, response) => {
         case '/screenshot': {
             try {
                 const stream = await screenshot(params)
-                const contentType = 'image/jpg';
+                const contentType = 'image/jpeg';
                 response.writeHead(200, {
                     'Content-Type': contentType
                 });
