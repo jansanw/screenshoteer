@@ -77,7 +77,7 @@ function screenshot(query) {
         }
     })
     const md5 = crypto.createHash('md5').update(option).digest('hex')
-    const filename = `/tmp/${md5}.png`
+    const filename = `/tmp/${md5}.jpg`
     const command = util.format(`${NODE_PATH} ./index.js --file %s %s`, filename, option)
     console.log({command})
 
