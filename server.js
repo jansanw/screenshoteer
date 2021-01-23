@@ -8,7 +8,7 @@ const {exec} = require('child_process');
 
 const port = process.env.PORT || 8060
 const proxy = process.env.PROXY || ''
-const NODE_PATH = process.env.NODE_PATH || 'NODE_PATH'
+const NODE_PATH = process.env.NODE_PATH || '/usr/bin/node'
 
 const help = `
 Path:
@@ -103,4 +103,4 @@ function screenshot(query) {
     })
 }
 
-server.listen(port);
+server.listen(port, '0.0.0.0');
